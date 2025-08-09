@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Fredoka+One&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+}
+
+body {
+  color: #1f2937; /* Always dark gray text for readability */
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      #ffffff
+    )
+    #f3f4f6; /* Light gray to white gradient */
+  font-family: 'Comic Neue', cursive;
+}
+
+/* Kid-friendly styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-secondary-400 to-secondary-600 hover:from-secondary-500 hover:to-secondary-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+}
+
+.btn-accent {
+  @apply bg-gradient-to-r from-accent-400 to-accent-600 hover:from-accent-500 hover:to-accent-700 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+}
+
+.card {
+  @apply bg-white rounded-3xl shadow-xl p-6 border-4 border-opacity-20 border-gray-200 text-gray-800;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-primary-500 focus:outline-none transition-colors duration-200 text-lg text-gray-800 bg-white placeholder-gray-500;
+}
+
+.rainbow-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+}
+
+.star-pattern {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+    radial-gradient(2px 2px at 40px 70px, #ff69b4, transparent),
+    radial-gradient(1px 1px at 90px 40px, #00bfff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #32cd32, transparent),
+    radial-gradient(2px 2px at 160px 30px, #ff4500, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+}
