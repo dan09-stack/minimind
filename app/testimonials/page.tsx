@@ -187,7 +187,7 @@ export default function TestimonialsPage() {
 
                   {/* Quote */}
                   <div className="flex-1 mb-6">
-                    <div className="text-3xl text-primary-300 mb-2">"</div>
+                    <div className="text-3xl text-primary-300 mb-2">&quot;</div>
                     <p className="text-gray-700 font-comic leading-relaxed mb-4 italic">
                       {testimonial.quote}
                     </p>
