@@ -9,10 +9,6 @@
   NEXT_PRIVATE_TARGET = "server"
 
 # Redirect all requests to Next.js
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/nextjs"
-  status = 200
 
 [functions]
   external_node_modules = ["sharp"]
