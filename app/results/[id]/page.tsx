@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter, useParams } from 'next/navigation'
 import { PDFGenerator } from '@/components/PDFGenerator'
+import Image from 'next/image'
 
 interface Generation {
   id: string
@@ -24,31 +25,31 @@ export default function ResultsPage() {
 
   useEffect(() => {
     if (status === 'loading') return // Still loading session
-    
+
     if (!session) {
       router.push('/auth/signin')
       return
     }
 
-    fetchGeneration()
-  }, [session, status, params.id])
-
-  const fetchGeneration = async () => {
-    try {
-      const response = await fetch(`/api/generations/${params.id}`)
-      if (response.ok) {
-        const data = await response.json()
-        setGeneration(data)
-      } else {
+    const fetchGeneration = async () => {
+      try {
+        const response = await fetch(`/api/generations/${params.id}`)
+        if (response.ok) {
+          const data = await response.json()
+          setGeneration(data)
+        } else {
+          router.push('/dashboard')
+        }
+      } catch (error) {
+        console.error('Error fetching generation:', error)
         router.push('/dashboard')
+      } finally {
+        setLoading(false)
       }
-    } catch (error) {
-      console.error('Error fetching generation:', error)
-      router.push('/dashboard')
-    } finally {
-      setLoading(false)
     }
-  }
+
+    fetchGeneration()
+  }, [session, status, params.id, router])
 
   if (loading) {
     return (
@@ -150,10 +151,13 @@ export default function ResultsPage() {
               </div>
               <h3 className="text-xl font-semibold mb-4">{generation.content.coloring.title}</h3>
               <p className="mb-4">{generation.content.coloring.description}</p>
-              <img
+              <Image
                 src={generation.content.coloring.imageUrl}
                 alt={generation.content.coloring.title}
-                className="w-full rounded-xl border"
+                width={1024}
+                height={768}
+                className="w-full h-auto rounded-xl border"
+                priority
               />
             </div>
           )}

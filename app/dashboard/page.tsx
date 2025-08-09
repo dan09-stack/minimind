@@ -35,34 +35,34 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (status === 'loading') return // Still loading session
-    
+
     if (!session) {
       router.push('/auth/signin')
       return
     }
 
-    fetchDashboardData()
-  }, [session, status])
+    const fetchDashboardData = async () => {
+      try {
+        const [userResponse, generationsResponse] = await Promise.all([
+          fetch('/api/user'),
+          fetch('/api/generations')
+        ])
 
-  const fetchDashboardData = async () => {
-    try {
-      const [userResponse, generationsResponse] = await Promise.all([
-        fetch('/api/user'),
-        fetch('/api/generations')
-      ])
-
-      if (userResponse.ok && generationsResponse.ok) {
-        const userData = await userResponse.json()
-        const generationsData = await generationsResponse.json()
-        setUser(userData)
-        setGenerations(generationsData)
+        if (userResponse.ok && generationsResponse.ok) {
+          const userData = await userResponse.json()
+          const generationsData = await generationsResponse.json()
+          setUser(userData)
+          setGenerations(generationsData)
+        }
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error)
+      } finally {
+        setLoading(false)
       }
-    } catch (error) {
-      console.error('Error fetching dashboard data:', error)
-    } finally {
-      setLoading(false)
     }
-  }
+
+    fetchDashboardData()
+  }, [session, status, router])
 
   if (loading) {
     return (
