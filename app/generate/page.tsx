@@ -35,15 +35,7 @@ export default function GeneratePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-kids bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-4">
-            🚀 Create Magic!
-          </h1>
-          <p className="text-xl font-comic text-gray-700">
-            Generate personalized learning content for your little ones
-          </p>
-        </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         
         <ContentGenerator />
       </div>

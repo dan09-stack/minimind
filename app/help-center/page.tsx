@@ -40,11 +40,7 @@ export default function HelpCenterPage() {
             <h3 className="font-bold text-gray-800 mb-1">FAQs</h3>
             <p className="text-sm text-gray-600">Most common questions answered.</p>
           </a>
-          <a href="#troubleshooting" className="block p-6 rounded-2xl bg-white border hover:border-secondary-200 shadow-sm hover:shadow-md transition">
-            <div className="text-3xl mb-2">🧰</div>
-            <h3 className="font-bold text-gray-800 mb-1">Troubleshooting</h3>
-            <p className="text-sm text-gray-600">Fix build, API, and login issues.</p>
-          </a>
+      
           <a href="#contact" className="block p-6 rounded-2xl bg-white border hover:border-accent-200 shadow-sm hover:shadow-md transition">
             <div className="text-3xl mb-2">📬</div>
             <h3 className="font-bold text-gray-800 mb-1">Contact Support</h3>
@@ -68,28 +64,7 @@ export default function HelpCenterPage() {
           </div>
         </div>
 
-        {/* Troubleshooting */}
-        <div id="troubleshooting" className="mb-16">
-          <h2 className="text-3xl font-kids text-gray-800 mb-6">Troubleshooting</h2>
-          <div className="bg-white rounded-xl border p-6 space-y-4">
-            <div>
-              <h3 className="font-bold text-gray-800">Build fails on deploy</h3>
-              <p className="text-gray-600 font-comic">Check ESLint/type errors in the deploy logs. Ensure environment variables are set. If you use Netlify, see the deployment guide.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-800">OpenAI requests failing</h3>
-              <p className="text-gray-600 font-comic">Verify `OPENAI_API_KEY` and your account credits. Watch rate limits and try again later.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-800">Database connection issues</h3>
-              <p className="text-gray-600 font-comic">Confirm `DATABASE_URL` is correct and uses SSL if your provider requires it. Run `npx prisma db push` to ensure schema exists.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-gray-800">Payments not working</h3>
-              <p className="text-gray-600 font-comic">Use Stripe test cards in test mode. Ensure keys are set and webhook (if used) points to `/api/webhooks/stripe`.</p>
-            </div>
-          </div>
-        </div>
+       
 
         {/* Contact */}
         <div id="contact" className="mb-16">
@@ -98,7 +73,6 @@ export default function HelpCenterPage() {
             <p className="text-gray-700 font-comic mb-4">Email us and include screenshots/logs for faster help.</p>
             <ul className="text-gray-700 font-comic space-y-2">
               <li>📧 Email: <a className="text-primary-600 underline" href="mailto:support@miniminds.app">support@miniminds.app</a></li>
-              <li>📄 Guide: <a className="text-primary-600 underline" href="/NETLIFY_DEPLOYMENT.md" target="_blank" rel="noreferrer">Netlify Deployment</a></li>
             </ul>
           </div>
         </div>

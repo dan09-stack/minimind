@@ -22,7 +22,7 @@ export default function HomePage() {
     {
       icon: '🧩',
       title: 'Fun Puzzles',
-      description: 'Word searches and brain teasers that make learning exciting',
+      description: 'Word searches and brain teasers that make learn exciting',
       color: 'from-green-400 to-blue-500'
     },
     {
