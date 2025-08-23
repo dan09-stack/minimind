@@ -11,6 +11,7 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState(0)
   const [activeFilter, setActiveFilter] = useState('all')
   const [loading, setLoading] = useState('')
+  const [billing, setBilling] = useState<'month' | 'year'>('month')
 
   const features = [
     {
@@ -217,7 +218,7 @@ export default function HomePage() {
     },
     {
       id: 'monthly',
-      name: 'Monthly Plan',
+      name: 'Basic',
       price: 9.99,
       interval: 'month',
       stripePriceId: 'price_1RtrXcQ1jVoldL3MPgHpIGfv', // Replace with your actual monthly price ID
@@ -234,7 +235,7 @@ export default function HomePage() {
     },
     {
       id: 'yearly',
-      name: 'Yearly Plan',
+      name: 'Premium',
       price: 99.99,
       interval: 'year',
       stripePriceId: 'price_1RtrXsQ1jVoldL3Mj3c4NadK', // Replace with your actual yearly price ID
@@ -644,16 +645,38 @@ export default function HomePage() {
             💰 Choose Your Plan
           </h2>
           <p className="text-2xl font-comic text-gray-700 mb-8 leading-relaxed">
-            Start with our free trial, then unlock unlimited creativity 
+            Start with our free trial of 7 prompts in 7 days, then unlock unlimited creativity 
             <br />with our affordable plans! 🌟
           </p>
 
-
+          <div className="mt-6 flex justify-center">
+            <div className="inline-flex bg-gray-100 rounded-full p-1">
+              <button
+                onClick={() => setBilling('month')}
+                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${
+                  billing === 'month' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setBilling('year')}
+                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${
+                  billing === 'year' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'
+                }`}
+              >
+                Yearly
+              </button>
+            </div>
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {displayPlans.map((plan: any) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {([plans.find(p=>p.id==='free'),
+               billing==='month' ? plans.find(p=>p.id==='monthly') : { ...plans.find(p=>p.id==='monthly')!, id:'basic_year', interval:'year', stripePriceId:'', price:79.99 },
+               billing==='year' ? plans.find(p=>p.id==='yearly') : { ...plans.find(p=>p.id==='yearly')!, id:'premium_month', interval:'month', stripePriceId:'', price:14.99 }
+            ].filter(Boolean) as typeof plans).map((plan: any) => (
               <div key={plan.id} className="relative transform transition-transform duration-300 hover:scale-105">
                 {plan.id === 'monthly' && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -669,14 +692,20 @@ export default function HomePage() {
                 <div className="text-center mb-6">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
                     <div className="text-4xl font-kids text-primary-600 mb-2">
-                      ${plan.price}
-                      {plan.price > 0 && (
-                        <span className="text-lg text-gray-600">/{plan.interval}</span>
+                      {plan.id === 'free' ? (
+                        <span className="text-green-600 font-extrabold">FREE</span>
+                      ) : plan.price > 0 ? (
+                        <>
+                          ${plan.price}
+                          <span className="text-lg text-gray-600">/{plan.interval}</span>
+                        </>
+                      ) : (
+                        <span className="text-gray-600">TBA</span>
                       )}
                     </div>
-                    <p className="text-sm text-green-600 font-semibold">
-                    🎁 Free trial: 5 prompts
-                    </p>
+                    {plan.id==='free' && (
+                      <p className="text-sm text-green-600 font-semibold">🎁 Free trial: 7 prompts in 7 days</p>
+                    )}
                     {plan.interval === 'year' && plan.price > 0 && (
                      <p className="text-sm text-green-600 font-semibold">
                          Save $20 per year!
@@ -695,9 +724,9 @@ export default function HomePage() {
 
                   <button
                     onClick={() => handleSubscribe(plan)}
-                    disabled={loading === plan.id}
+                    disabled={loading === plan.id || !plan.stripePriceId}
                     className={`w-full py-4 text-lg font-bold rounded-full transition-all duration-200 disabled:opacity-50 ${
-                      plan.id === 'monthly' ? 'btn-primary' : 'btn-accent'
+                      plan.id === 'free' ? 'btn-secondary' : plan.id === 'monthly' ? 'btn-primary' : 'btn-accent'
                     }`}
                   >
                     {loading === plan.id ? (
@@ -705,6 +734,10 @@ export default function HomePage() {
                         <span className="animate-spin">⏳</span>
                         <span>Processing...</span>
                       </span>
+                    ) : !plan.stripePriceId && plan.id !== 'free' ? (
+                      '🔒 Coming Soon'
+                    ) : plan.id==='free' ? (
+                      '🚀 Start Free Trial'
                     ) : (
                       '💎 Get Started'
                     )}
