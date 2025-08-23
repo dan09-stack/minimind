@@ -1,10 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
 
 export default function HowItWorksPage() {
-  const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
     {
@@ -12,12 +10,6 @@ export default function HowItWorksPage() {
       title: 'Choose Your Topic',
       description: 'Pick any subject your child is curious about - from dinosaurs to space, math to art!',
       icon: '🎯',
-      details: [
-        'Browse 25+ subject categories',
-        'Enter custom topics that spark interest',
-        'Select age-appropriate difficulty (4-12 years)',
-        'Choose how many questions to include'
-      ],
       color: 'from-blue-400 to-purple-500'
     },
     {
@@ -25,12 +17,6 @@ export default function HowItWorksPage() {
       title: 'Select Content Types',
       description: 'Mix and match lessons, puzzles, and coloring sheets for the perfect learning experience!',
       icon: '🧩',
-      details: [
-        'Interactive mini-lessons with key concepts',
-        'Fun word search puzzles and brain teasers',
-        'Beautiful AI-generated coloring sheets',
-        'Combine multiple types for variety'
-      ],
       color: 'from-green-400 to-blue-500'
     },
     {
@@ -38,26 +24,7 @@ export default function HowItWorksPage() {
       title: 'AI Creates Magic',
       description: 'Our smart AI generates personalized, educational content in seconds!',
       icon: '✨',
-      details: [
-        'Content tailored to exact age and skill level',
-        'Educational accuracy with fun presentation',
-        'Unique content every time you generate',
-        'Safe, child-friendly language and images'
-      ],
       color: 'from-pink-400 to-red-500'
-    },
-    {
-      step: 4,
-      title: 'Learn & Play',
-      description: 'Download, print, or use digitally - learning has never been this engaging!',
-      icon: '🎉',
-      details: [
-        'High-quality PDF downloads ready to print',
-        'Interactive digital versions for tablets',
-        'Save favorites to your content library',
-        'Share with teachers and friends'
-      ],
-      color: 'from-yellow-400 to-orange-500'
     }
   ]
 
@@ -101,7 +68,7 @@ export default function HowItWorksPage() {
             ⚡ How It Works
           </h1>
           <p className="text-2xl font-comic text-gray-700 mb-8 leading-relaxed">
-            Creating magical learning experiences is as easy as 1-2-3-4! 
+            Creating magical learning experiences is as easy as 1-2-3! 
             <br />Let us show you the simple process that delights kids worldwide 🌟
           </p>
           <div className="flex justify-center">
@@ -119,81 +86,23 @@ export default function HowItWorksPage() {
       {/* Steps Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Steps Navigation */}
-            <div className="space-y-6">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className={`cursor-pointer transition-all duration-300 ${
-                    activeStep === index ? 'transform scale-105' : 'hover:transform hover:scale-102'
-                  }`}
-                  onClick={() => setActiveStep(index)}
-                >
-                  <div className={`bg-white rounded-3xl p-6 shadow-lg border-4 ${
-                    activeStep === index 
-                      ? 'border-primary-300 shadow-2xl' 
-                      : 'border-transparent hover:border-primary-200'
-                  }`}>
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-3xl transform ${
-                        activeStep === index ? 'rotate-12' : ''
-                      } transition-transform duration-300`}>
-                        {step.icon}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <span className="bg-primary-100 text-primary-600 font-bold px-3 py-1 rounded-full text-sm">
-                            Step {step.step}
-                          </span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-800 font-kids mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-600 font-comic">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {steps.map((step) => (
+              <div key={step.step} className="bg-white rounded-3xl p-8 shadow-lg border-4 border-primary-100 text-center flex flex-col items-center justify-start h-64">
+                <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-4xl mb-4`}>
+                  {step.icon}
                 </div>
-              ))}
-            </div>
-
-            {/* Step Details */}
-            <div className="lg:sticky lg:top-8">
-              <div className="bg-white rounded-3xl p-8 shadow-2xl border-4 border-primary-100">
-                <div className={`w-20 h-20 bg-gradient-to-r ${steps[activeStep].color} rounded-full flex items-center justify-center text-4xl mb-6 mx-auto animate-pulse`}>
-                  {steps[activeStep].icon}
-                </div>
-                
-                <h3 className="text-3xl font-bold text-gray-800 font-kids text-center mb-6">
-                  {steps[activeStep].title}
+                <span className="bg-primary-100 text-primary-600 font-bold px-3 py-1 rounded-full text-sm mb-2">
+                  Step {step.step}
+                </span>
+                <h3 className="text-2xl font-bold text-gray-800 font-kids mb-2">
+                  {step.title}
                 </h3>
-                
-                <p className="text-lg text-gray-700 font-comic text-center mb-8 leading-relaxed">
-                  {steps[activeStep].description}
+                <p className="text-gray-600 font-comic text-sm">
+                  {step.description}
                 </p>
-
-                <div className="space-y-4">
-                  {steps[activeStep].details.map((detail, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <span className="text-green-500 font-bold text-xl">✓</span>
-                      <span className="text-gray-700 font-comic">{detail}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 text-center">
-                  <Link 
-                    href="/generate"
-                    className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
-                  >
-                    🚀 Try It Now!
-                  </Link>
-                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

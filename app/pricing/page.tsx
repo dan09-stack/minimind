@@ -109,6 +109,8 @@ export default function Pricing() {
     }
   }
 
+  const displayPlans = plans.filter((p) => p.id === 'monthly' || p.id === 'yearly')
+  
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-16">
@@ -116,15 +118,15 @@ export default function Pricing() {
           🎯 Choose Your Plan
         </h1>
         <p className="text-xl text-gray-600 font-comic max-w-3xl mx-auto">
-          Start with our free trial, then unlock unlimited creativity with our affordable plans!
+          Start with our free trial of 5 prompts, then unlock unlimited creativity with our affordable plans!
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {plans.map((plan) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {displayPlans.map((plan) => (
           <div 
-            key={plan.id} 
-            className={`card relative ${plan.popular ? 'ring-4 ring-primary-200 transform scale-105' : ''}`}
+          key={plan.id} 
+          className={`card relative hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 ${plan.popular ? 'ring-4 ring-primary-200' : ''}`}
           >
             {plan.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -136,12 +138,13 @@ export default function Pricing() {
 
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
-              <div className="text-4xl font-kids text-primary-600 mb-2">
+              <div className="text-4xl font-kids text-primary-600 mb-1">
                 ${plan.price}
                 {plan.price > 0 && (
                   <span className="text-lg text-gray-600">/{plan.interval}</span>
                 )}
               </div>
+              <p className="text-sm text-green-600 font-semibold">🎁 Free trial: 5 prompts</p>
               {plan.interval === 'year' && plan.price > 0 && (
                 <p className="text-sm text-green-600 font-semibold">
                   Save $20 per year!

@@ -7,7 +7,7 @@ import { useState } from 'react'
 export default function HomePage() {
   const { data: session } = useSession()
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
-  const [activeStep, setActiveStep] = useState(0)
+
   const [activeCategory, setActiveCategory] = useState(0)
   const [activeFilter, setActiveFilter] = useState('all')
   const [loading, setLoading] = useState('')
@@ -53,12 +53,6 @@ export default function HomePage() {
       title: 'Choose Your Topic',
       description: 'Pick any subject your child is curious about - from dinosaurs to space, math to art!',
       icon: '🎯',
-      details: [
-        'Browse 25+ subject categories',
-        'Enter custom topics that spark interest',
-        'Select age-appropriate difficulty (4-12 years)',
-        'Choose how many questions to include'
-      ],
       color: 'from-blue-400 to-purple-500'
     },
     {
@@ -66,12 +60,6 @@ export default function HomePage() {
       title: 'Select Content Types',
       description: 'Mix and match lessons, puzzles, and coloring sheets for the perfect learning experience!',
       icon: '🧩',
-      details: [
-        'Interactive mini-lessons with key concepts',
-        'Fun word search puzzles and brain teasers',
-        'Beautiful AI-generated coloring sheets',
-        'Combine multiple types for variety'
-      ],
       color: 'from-green-400 to-blue-500'
     },
     {
@@ -79,26 +67,7 @@ export default function HomePage() {
       title: 'AI Creates Magic',
       description: 'Our smart AI generates personalized, educational content in seconds!',
       icon: '✨',
-      details: [
-        'Content tailored to exact age and skill level',
-        'Educational accuracy with fun presentation',
-        'Unique content every time you generate',
-        'Safe, child-friendly language and images'
-      ],
       color: 'from-pink-400 to-red-500'
-    },
-    {
-      step: 4,
-      title: 'Learn & Play',
-      description: 'Download, print, or use digitally - learning has never been this engaging!',
-      icon: '🎉',
-      details: [
-        'High-quality PDF downloads ready to print',
-        'Interactive digital versions for tablets',
-        'Save favorites to your content library',
-        'Share with teachers and friends'
-      ],
-      color: 'from-yellow-400 to-orange-500'
     }
   ]
 
@@ -329,7 +298,9 @@ export default function HomePage() {
     }
   }
 
-  return (
+  const displayPlans = plans.filter((p) => p.id === 'monthly' || p.id === 'yearly')
+  
+   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       {/* HOME SECTION */}
       <section id="home" className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
@@ -473,78 +444,29 @@ export default function HomePage() {
             ⚡ How It Works
           </h2>
           <p className="text-2xl font-comic text-gray-700 mb-8 leading-relaxed">
-            Creating magical learning experiences is as easy as 1-2-3-4! 
+            Creating magical learning experiences is as easy as 1-2-3! 
             <br />Let us show you the simple process that delights kids worldwide 🌟
           </p>
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Steps Navigation */}
-            <div className="space-y-6">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className={`cursor-pointer transition-all duration-300 ${
-                    activeStep === index ? 'transform scale-105' : 'hover:transform hover:scale-102'
-                  }`}
-                  onClick={() => setActiveStep(index)}
-                >
-                  <div className={`bg-white rounded-3xl p-6 shadow-lg border-4 ${
-                    activeStep === index 
-                      ? 'border-primary-300 shadow-2xl' 
-                      : 'border-transparent hover:border-primary-200'
-                  }`}>
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-3xl transform ${
-                        activeStep === index ? 'rotate-12' : ''
-                      } transition-transform duration-300`}>
-                        {step.icon}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <span className="bg-primary-100 text-primary-600 font-bold px-3 py-1 rounded-full text-sm">
-                            Step {step.step}
-                          </span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-800 font-kids mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-600 font-comic">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {steps.map((step) => (
+              <div key={step.step} className="bg-white rounded-3xl p-8 shadow-lg border-4 border-primary-100 text-center flex flex-col items-center justify-start h-64">
+                <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-4xl mb-4`}>
+                  {step.icon}
                 </div>
-              ))}
-            </div>
-
-            {/* Step Details */}
-            <div className="lg:sticky lg:top-8">
-              <div className="bg-white rounded-3xl p-8 shadow-2xl border-4 border-primary-100">
-                <div className={`w-20 h-20 bg-gradient-to-r ${steps[activeStep].color} rounded-full flex items-center justify-center text-4xl mb-6 mx-auto animate-pulse`}>
-                  {steps[activeStep].icon}
-                </div>
-                
-                <h3 className="text-3xl font-bold text-gray-800 font-kids text-center mb-6">
-                  {steps[activeStep].title}
+                <span className="bg-primary-100 text-primary-600 font-bold px-3 py-1 rounded-full text-sm mb-2">
+                  Step {step.step}
+                </span>
+                <h3 className="text-2xl font-bold text-gray-800 font-kids mb-2">
+                  {step.title}
                 </h3>
-                
-                <p className="text-lg text-gray-700 font-comic text-center mb-8 leading-relaxed">
-                  {steps[activeStep].description}
+                <p className="text-gray-600 font-comic text-sm">
+                  {step.description}
                 </p>
-
-                <div className="space-y-4">
-                  {steps[activeStep].details.map((detail, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <span className="text-green-500 font-bold text-xl">✓</span>
-                      <span className="text-gray-700 font-comic">{detail}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -725,13 +647,15 @@ export default function HomePage() {
             Start with our free trial, then unlock unlimited creativity 
             <br />with our affordable plans! 🌟
           </p>
+
+
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <div key={plan.id} className="relative group">
-                {plan.popular && (
+          <div className="grid md:grid-cols-2 gap-8">
+            {displayPlans.map((plan: any) => (
+              <div key={plan.id} className="relative transform transition-transform duration-300 hover:scale-105">
+                {plan.id === 'monthly' && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                       ⭐ Most Popular
@@ -739,10 +663,10 @@ export default function HomePage() {
                   </div>
                 )}
 
-                <div className={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-4 ${
-                  plan.popular ? 'border-primary-300 shadow-2xl' : 'border-transparent hover:border-primary-200'
+                <div className={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 border-4 ${
+                plan.id === 'monthly' ? 'border-primary-300 shadow-2xl' : 'border-transparent hover:border-primary-200'
                 } h-full flex flex-col`}>
-                  <div className="text-center mb-6">
+                <div className="text-center mb-6">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
                     <div className="text-4xl font-kids text-primary-600 mb-2">
                       ${plan.price}
@@ -750,15 +674,18 @@ export default function HomePage() {
                         <span className="text-lg text-gray-600">/{plan.interval}</span>
                       )}
                     </div>
+                    <p className="text-sm text-green-600 font-semibold">
+                    🎁 Free trial: 5 prompts
+                    </p>
                     {plan.interval === 'year' && plan.price > 0 && (
-                      <p className="text-sm text-green-600 font-semibold">
-                        Save $20 per year!
+                     <p className="text-sm text-green-600 font-semibold">
+                         Save $20 per year!
                       </p>
                     )}
                   </div>
 
                   <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((feature, index) => (
+                    {plan.features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-start space-x-3">
                         <span className="text-green-500 font-bold text-lg">✓</span>
                         <span className="text-gray-700 font-comic">{feature}</span>
@@ -769,11 +696,9 @@ export default function HomePage() {
                   <button
                     onClick={() => handleSubscribe(plan)}
                     disabled={loading === plan.id}
-                    className={`w-full py-4 px-6 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white shadow-lg'
-                        : 'border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white'
-                    } ${loading === plan.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`w-full py-4 text-lg font-bold rounded-full transition-all duration-200 disabled:opacity-50 ${
+                      plan.id === 'monthly' ? 'btn-primary' : 'btn-accent'
+                    }`}
                   >
                     {loading === plan.id ? (
                       <span className="flex items-center justify-center space-x-2">
@@ -781,7 +706,7 @@ export default function HomePage() {
                         <span>Processing...</span>
                       </span>
                     ) : (
-                      plan.stripePriceId === null ? '🎁 Start Free Trial' : `🚀 Choose ${plan.name}`
+                      '💎 Get Started'
                     )}
                   </button>
                 </div>
@@ -820,16 +745,11 @@ export default function HomePage() {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white/10 rounded-xl p-6">
               <div className="text-3xl mb-2">⚡</div>
               <div className="font-bold">Instant Access</div>
               <div className="text-sm opacity-80">Start creating in 30 seconds</div>
-            </div>
-            <div className="bg-white/10 rounded-xl p-6">
-              <div className="text-3xl mb-2">💳</div>
-              <div className="font-bold">No Credit Card</div>
-              <div className="text-sm opacity-80">Free trial, no strings attached</div>
             </div>
             <div className="bg-white/10 rounded-xl p-6">
               <div className="text-3xl mb-2">❤️</div>
