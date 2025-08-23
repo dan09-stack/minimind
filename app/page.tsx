@@ -413,12 +413,12 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 px-4 sm:px-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="bg-white rounded-2xl p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300 transform group-hover:scale-105">
-                  <div className="text-5xl mb-4">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-primary-600 font-kids mb-2">
+                <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300 transform group-hover:scale-105">
+                  <div className="text-4xl sm:text-5xl mb-4">{stat.icon}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary-600 font-kids mb-2">
                     {stat.number}
                   </div>
                   <div className="text-gray-600 font-comic font-semibold">
@@ -433,8 +433,8 @@ export default function HomePage() {
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 text-6xl animate-bounce">🌟</div>
         <div className="absolute top-40 right-16 text-5xl animate-pulse">🎈</div>
-        <div className="absolute bottom-20 left-20 text-4xl animate-bounce delay-100">🦄</div>
-        <div className="absolute bottom-32 right-10 text-5xl animate-pulse delay-200">🌈</div>
+        <div className="hidden md:block absolute bottom-20 left-20 text-4xl animate-bounce delay-100">🦄</div>
+        <div className="hidden md:block absolute bottom-32 right-10 text-5xl animate-pulse delay-200">🌈</div>
       </section>
 
       {/* HOW IT WORKS SECTION */}
