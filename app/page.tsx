@@ -172,7 +172,7 @@ export default function HomePage() {
       interval: 'trial',
       stripePriceId: null,
       features: [
-        '3 content generations',
+        '5 content generations',
         'All content types (lessons, puzzles, coloring)',
         'PDF downloads',
         'Age-appropriate content (4-12 years)',
@@ -287,7 +287,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <Link 
                   href="/auth/signup"
-                  className="bg-white text-primary-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="bg-secondary-200 hover:bg-secondary-300 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   🎉 Get Started Free!
                 </Link>
@@ -318,17 +318,17 @@ export default function HomePage() {
                   <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">📚</div>
                     <h3 className="font-bold text-textPrimary">Mini Lesson</h3>
-                    <p className="text-sm text-textSecondary">Interactive learning</p>
+                    <p className="text-sm textPrimary">Interactive learning</p>
                   </div>
                   <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">🧩</div>
                     <h3 className="font-bold text-textPrimary">Word Puzzle</h3>
-                    <p className="text-sm text-textSecondary">Brain training fun</p>
+                    <p className="text-sm textPrimary">Brain training fun</p>
                   </div>
                   <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">🎨</div>
                     <h3 className="font-bold text-textPrimary">Coloring Sheet</h3>
-                    <p className="text-sm text-textSecondary">Creative expression</p>
+                    <p className="text-sm textPrimary">Creative expression</p>
                   </div>
                 </div>
               </div>
@@ -495,7 +495,7 @@ export default function HomePage() {
             💰 Choose Your Plan
           </h2>
           <p className="text-2xl font-comic text-gray-700 mb-8 leading-relaxed">
-            Start with our free trial of 7 prompts in 7 days, then unlock unlimited creativity 
+            Start with our free trial, then unlock unlimited creativity 
             <br />with our affordable plans! 🌟
           </p>
 
@@ -533,7 +533,7 @@ export default function HomePage() {
                       )}
                     </div>
                     {plan.id==='free' && (
-                      <p className="text-sm text-green-600 font-semibold">🎁 Free trial: 7 prompts in 7 days</p>
+                      <p className="text-sm text-green-600 font-semibold">🎁 Free trial available</p>
                     )}
                     {plan.interval === 'year' && plan.price > 0 && (
                      <p className="text-sm text-green-600 font-semibold">
