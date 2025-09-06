@@ -66,7 +66,7 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-bounce">📚</div>
           <p className="text-xl font-comic text-gray-600">Loading your dashboard...</p>
@@ -78,15 +78,16 @@ export default function Dashboard() {
   const isUnlimited = user?.subscription?.plan === 'monthly' || user?.subscription?.plan === 'yearly'
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-kids text-gray-800 mb-2">
-          🌟 Welcome back, {user?.name}!
-        </h1>
-        <p className="text-xl text-gray-600 font-comic">
-          Ready to create more amazing learning content?
-        </p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-kids text-gray-800 mb-2">
+            🌟 Welcome back, {user?.name}!
+          </h1>
+          <p className="text-xl text-gray-600 font-comic">
+            Ready to create more amazing learning content?
+          </p>
+        </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         {/* Usage Stats */}
@@ -234,6 +235,7 @@ export default function Dashboard() {
           </div>
         )}
       </div>
+    </div>
     </div>
   )
 }

@@ -41,9 +41,7 @@ const plans: PricingPlan[] = [
       'All content types (lessons, puzzles, coloring)',
       'PDF downloads',
       'Age-appropriate content (4-12 years)',
-      'Priority support',
-      'Content history & library',
-      'Advanced customization options'
+      'Priority support'
     ]
   },
   {
@@ -184,7 +182,7 @@ export default function Pricing() {
                     <span className="text-lg text-gray-600">/{plan.interval}</span>
                   </>
                 ) : (
-                  <span className="text-gray-600">TBA</span>
+                  <span className="text-gray-600">Coming Soon!</span>
                 )}
               </div>
               {plan.id === 'free' && (

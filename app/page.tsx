@@ -9,7 +9,6 @@ export default function HomePage() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
 
   const [activeCategory, setActiveCategory] = useState(0)
-  const [activeFilter, setActiveFilter] = useState('all')
   const [loading, setLoading] = useState('')
   const [billing, setBilling] = useState<'month' | 'year'>('month')
 
@@ -18,25 +17,25 @@ export default function HomePage() {
       icon: '📚',
       title: 'Interactive Lessons',
       description: 'Engaging mini-lessons tailored to your child\'s age and interests',
-      color: 'from-blue-400 to-purple-500'
+      color: 'from-secondary-100 to-secondary-200'
     },
     {
       icon: '🧩',
       title: 'Fun Puzzles',
       description: 'Word searches and brain teasers that make learn exciting',
-      color: 'from-green-400 to-blue-500'
+      color: 'from-accent-100 to-accent-200'
     },
     {
       icon: '🎨',
       title: 'Coloring Sheets',
       description: 'Beautiful, educational coloring pages to spark creativity',
-      color: 'from-pink-400 to-red-500'
+      color: 'from-primary-100 to-primary-200'
     },
     {
       icon: '🎯',
       title: 'Age-Appropriate',
       description: 'Content perfectly designed for ages 4-12 with difficulty scaling',
-      color: 'from-yellow-400 to-orange-500'
+      color: 'from-primary-100 to-accent-100'
     }
   ]
 
@@ -54,30 +53,30 @@ export default function HomePage() {
       title: 'Choose Your Topic',
       description: 'Pick any subject your child is curious about - from dinosaurs to space, math to art!',
       icon: '🎯',
-      color: 'from-blue-400 to-purple-500'
+      color: 'from-primary-100 to-secondary-100'
     },
     {
       step: 2,
       title: 'Select Content Types',
       description: 'Mix and match lessons, puzzles, and coloring sheets for the perfect learning experience!',
       icon: '🧩',
-      color: 'from-green-400 to-blue-500'
+      color: 'from-accent-100 to-accent-200'
     },
     {
       step: 3,
       title: 'AI Creates Magic',
       description: 'Our smart AI generates personalized, educational content in seconds!',
       icon: '✨',
-      color: 'from-pink-400 to-red-500'
+      color: 'from-secondary-100 to-secondary-200'
     }
   ]
 
   // Benefits Data
   const categories = [
-    { id: 0, name: 'For Kids', icon: '👦👧', color: 'from-blue-400 to-purple-500' },
-    { id: 1, name: 'For Parents', icon: '👨‍👩‍👧‍👦', color: 'from-green-400 to-blue-500' },
-    { id: 2, name: 'For Teachers', icon: '👩‍🏫', color: 'from-pink-400 to-red-500' },
-    { id: 3, name: 'Learning Benefits', icon: '🧠', color: 'from-yellow-400 to-orange-500' }
+    { id: 0, name: 'For Kids', icon: '👦👧', color: 'from-secondary-100 to-secondary-200' },
+    { id: 1, name: 'For Parents', icon: '👨‍👩‍👧‍👦', color: 'from-accent-100 to-accent-200' },
+    { id: 2, name: 'For Teachers', icon: '👩‍🏫', color: 'from-primary-100 to-primary-200' },
+    { id: 3, name: 'Learning Benefits', icon: '🧠', color: 'from-primary-100 to-accent-100' }
   ]
 
   const benefits = {
@@ -163,42 +162,6 @@ export default function HomePage() {
     ]
   }
 
-  // Testimonials Data
-  const testimonials = [
-    {
-      type: 'parent',
-      name: 'Sarah Johnson',
-      role: 'Mom of 6-year-old Emma',
-      location: 'Seattle, WA',
-      rating: 5,
-      quote: "Emma went from dreading homework to asking for 'more learning games'! The personalized content is incredible.",
-      highlight: 'Transformed homework time',
-      avatar: '👩‍💼',
-      story: 'Emma struggled with traditional worksheets, but MiniMinds coloring sheets about her favorite animals made learning exciting!'
-    },
-    {
-      type: 'teacher',
-      name: 'Mr. Rodriguez',
-      role: '3rd Grade Teacher',
-      location: 'Austin, TX',
-      rating: 5,
-      quote: "As a teacher of 28 students with different learning levels, MiniMinds has been a game-changer.",
-      highlight: 'Saves 10+ hours weekly',
-      avatar: '👨‍🏫',
-      story: 'I can create differentiated content for my advanced and struggling readers in minutes instead of hours.'
-    },
-    {
-      type: 'parent',
-      name: 'Michael Chen',
-      role: 'Dad of twins (age 8)',
-      location: 'San Francisco, CA',
-      rating: 5,
-      quote: "My twins have completely different interests. MiniMinds lets me create content for both without any extra work!",
-      highlight: 'Perfect for different interests',
-      avatar: '👨‍💻',
-      story: 'Instead of buying separate workbooks, I generate custom content for both kids. They compete to finish first!'
-    }
-  ]
 
   // Pricing Data
   const plans = [
@@ -218,7 +181,7 @@ export default function HomePage() {
     },
     {
       id: 'monthly',
-      name: 'Basic',
+      name: 'Regular',
       price: 9.99,
       interval: 'month',
       stripePriceId: 'price_1RtrXcQ1jVoldL3MPgHpIGfv', // Replace with your actual monthly price ID
@@ -228,14 +191,12 @@ export default function HomePage() {
         'All content types (lessons, puzzles, coloring)',
         'PDF downloads',
         'Age-appropriate content (4-12 years)',
-        'Priority support',
-        'Content history & library',
-        'Advanced customization options'
+        'Priority support'
       ]
     },
     {
       id: 'yearly',
-      name: 'Premium',
+      name: 'Regular',
       price: 99.99,
       interval: 'year',
       stripePriceId: 'price_1RtrXsQ1jVoldL3Mj3c4NadK', // Replace with your actual yearly price ID
@@ -244,18 +205,25 @@ export default function HomePage() {
         'All content types (lessons, puzzles, coloring)',
         'PDF downloads',
         'Age-appropriate content (4-12 years)',
-        'Priority support',
+        'Priority support'
+      ]
+    },
+     {
+         id: 'premium',
+         name: 'Premium',
+       price: 0, // Coming soon
+      interval: 'year',
+      stripePriceId: null,
+      features: [
+        'Everything in Regular',
         'Content history & library',
         'Advanced customization options',
         'Early access to new features'
       ]
     }
   ]
-
-  const filteredTestimonials = activeFilter === 'all' 
-    ? testimonials 
-    : testimonials.filter(t => t.type === activeFilter)
-
+ 
+ 
   const handleSubscribe = async (plan: typeof plans[0]) => {
     if (plan.stripePriceId === null) {
       // Handle free trial signup
@@ -299,10 +267,9 @@ export default function HomePage() {
     }
   }
 
-  const displayPlans = plans.filter((p) => p.id === 'monthly' || p.id === 'yearly')
-  
+
    return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-white">
       {/* HOME SECTION */}
       <section id="home" className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -320,13 +287,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <Link 
                   href="/auth/signup"
-                  className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="bg-white text-primary-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   🎉 Get Started Free!
                 </Link>
                 <Link 
                   href="/auth/signin"
-                  className="border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300"
+                  className="bg-white text-primary-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   🔑 Sign In
                 </Link>
@@ -337,7 +304,7 @@ export default function HomePage() {
               <div className="flex justify-center mb-12">
                 <Link 
                   href="/generate"
-                  className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="btn-primary text-xl"
                 >
                   🚀 Start Creating Now!
                 </Link>
@@ -348,20 +315,20 @@ export default function HomePage() {
             <div className="relative max-w-4xl mx-auto">
               <div className="bg-white rounded-3xl shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform duration-300">
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-6 text-center">
+                  <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">📚</div>
-                    <h3 className="font-bold text-blue-800">Mini Lesson</h3>
-                    <p className="text-sm text-blue-600">Interactive learning</p>
+                    <h3 className="font-bold text-textPrimary">Mini Lesson</h3>
+                    <p className="text-sm text-textSecondary">Interactive learning</p>
                   </div>
-                  <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-xl p-6 text-center">
+                  <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">🧩</div>
-                    <h3 className="font-bold text-green-800">Word Puzzle</h3>
-                    <p className="text-sm text-green-600">Brain training fun</p>
+                    <h3 className="font-bold text-textPrimary">Word Puzzle</h3>
+                    <p className="text-sm text-textSecondary">Brain training fun</p>
                   </div>
-                  <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl p-6 text-center">
+                  <div className="bg-card rounded-xl p-6 text-center">
                     <div className="text-4xl mb-2">🎨</div>
-                    <h3 className="font-bold text-pink-800">Coloring Sheet</h3>
-                    <p className="text-sm text-pink-600">Creative expression</p>
+                    <h3 className="font-bold text-textPrimary">Coloring Sheet</h3>
+                    <p className="text-sm text-textSecondary">Creative expression</p>
                   </div>
                 </div>
               </div>
@@ -390,7 +357,7 @@ export default function HomePage() {
                 onMouseEnter={() => setHoveredFeature(index)}
                 onMouseLeave={() => setHoveredFeature(null)}
               >
-                <div className="bg-white rounded-3xl p-8 shadow-lg group-hover:shadow-2xl transition-shadow duration-300 border-4 border-transparent group-hover:border-primary-200">
+                <div className="bg-card rounded-3xl p-8 shadow-lg group-hover:shadow-2xl transition-shadow duration-300 border-4 border-transparent group-hover:border-primary-200">
                   <div className={`w-20 h-20 bg-gradient-to-r ${feature.color} rounded-full flex items-center justify-center text-4xl mb-6 mx-auto transform group-hover:rotate-12 transition-transform duration-300`}>
                     {feature.icon}
                   </div>
@@ -406,30 +373,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="py-16 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-3xl max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-kids text-gray-800 mb-4">
-              🏆 Trusted by Families Worldwide
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 px-4 sm:px-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300 transform group-hover:scale-105">
-                  <div className="text-4xl sm:text-5xl mb-4">{stat.icon}</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-primary-600 font-kids mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-comic font-semibold">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 text-6xl animate-bounce">🌟</div>
@@ -453,7 +397,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step) => (
-              <div key={step.step} className="bg-white rounded-3xl p-8 shadow-lg border-4 border-primary-100 text-center flex flex-col items-center justify-start h-64">
+              <div key={step.step} className="bg-card rounded-3xl p-8 shadow-lg border-4 border-primary-100 text-center flex flex-col items-center justify-start h-64">
                 <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-4xl mb-4`}>
                   {step.icon}
                 </div>
@@ -473,7 +417,7 @@ export default function HomePage() {
       </section>
 
       {/* BENEFITS SECTION */}
-      <section id="benefits" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section id="benefits" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-6xl font-kids bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6">
             🎯 Amazing Benefits
@@ -518,7 +462,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits[activeCategory as keyof typeof benefits]?.map((benefit, index) => (
               <div key={index} className="group">
-                <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-primary-200">
+                <div className="bg-card rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-primary-200">
                   <div className={`w-16 h-16 bg-gradient-to-r ${categories[activeCategory].color} rounded-full flex items-center justify-center text-3xl mb-6 mx-auto group-hover:rotate-12 transition-transform duration-300`}>
                     {benefit.icon}
                   </div>
@@ -543,103 +487,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
-      <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-6xl font-kids bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6">
-            💬 Success Stories
-          </h2>
-          <p className="text-2xl font-comic text-gray-700 mb-8 leading-relaxed">
-            Real families, real teachers, real results! 
-            <br />Discover how MiniMinds is transforming learning experiences worldwide 🌟
-          </p>
-        </div>
-
-        {/* Filter Buttons */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              { id: 'all', name: 'All Stories', icon: '💫' },
-              { id: 'parent', name: 'Parents', icon: '👨‍👩‍👧‍👦' },
-              { id: 'teacher', name: 'Teachers', icon: '👩‍🏫' }
-            ].map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 ${
-                  activeFilter === filter.id
-                    ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <span className="text-xl">{filter.icon}</span>
-                <span className="font-comic">{filter.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Testimonials Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredTestimonials.map((testimonial, index) => (
-              <div key={index} className="group">
-                <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-primary-200 h-full flex flex-col">
-                  {/* Header */}
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center text-2xl">
-                      {testimonial.avatar}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-gray-800 font-kids">{testimonial.name}</h3>
-                      <p className="text-sm text-gray-600 font-comic">{testimonial.role}</p>
-                      <p className="text-xs text-gray-500">{testimonial.location}</p>
-                    </div>
-                    <div className="flex space-x-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-lg">⭐</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Quote */}
-                  <div className="flex-1 mb-6">
-                    <div className="text-3xl text-primary-300 mb-2">&quot;</div>
-                    <p className="text-gray-700 font-comic leading-relaxed mb-4 italic">
-                      {testimonial.quote}
-                    </p>
-                  </div>
-
-                  {/* Highlight */}
-                  <div className="mb-6">
-                    <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                      testimonial.type === 'parent' 
-                        ? 'bg-pink-100 text-pink-600' 
-                        : 'bg-blue-100 text-blue-600'
-                    }`}>
-                      {testimonial.highlight}
-                    </span>
-                  </div>
-
-                  {/* Story */}
-                  <div className="bg-gray-50 rounded-xl p-4 border-l-4 border-primary-300">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-lg">📖</span>
-                      <span className="font-bold text-gray-800 text-sm">Real Story</span>
-                    </div>
-                    <p className="text-gray-600 font-comic text-sm leading-relaxed">
-                      {testimonial.story}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PRICING SECTION */}
-      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-6xl font-kids bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6">
             💰 Choose Your Plan
@@ -651,43 +501,22 @@ export default function HomePage() {
 
           <div className="mt-6 flex justify-center">
             <div className="inline-flex bg-gray-100 rounded-full p-1">
-              <button
-                onClick={() => setBilling('month')}
-                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${
-                  billing === 'month' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setBilling('year')}
-                className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${
-                  billing === 'year' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'
-                }`}
-              >
-                Yearly
-              </button>
+              <button onClick={() => setBilling('month')} className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${billing === 'month' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'}`}>Monthly</button>
+              <button onClick={() => setBilling('year')} className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${billing === 'year' ? 'bg-white text-gray-900 shadow' : 'text-gray-600'}`}>Yearly</button>
             </div>
           </div>
+
         </div>
 
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {([plans.find(p=>p.id==='free'),
-               billing==='month' ? plans.find(p=>p.id==='monthly') : { ...plans.find(p=>p.id==='monthly')!, id:'basic_year', interval:'year', stripePriceId:'', price:79.99 },
-               billing==='year' ? plans.find(p=>p.id==='yearly') : { ...plans.find(p=>p.id==='yearly')!, id:'premium_month', interval:'month', stripePriceId:'', price:14.99 }
+               (billing==='month' ? plans.find(p=>p.id==='monthly') : plans.find(p=>p.id==='yearly')),
+               plans.find(p=>p.id==='premium')
             ].filter(Boolean) as typeof plans).map((plan: any) => (
               <div key={plan.id} className="relative transform transition-transform duration-300 hover:scale-105">
-                {plan.id === 'monthly' && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-full text-sm font-bold">
-                      ⭐ Most Popular
-                    </span>
-                  </div>
-                )}
-
                 <div className={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 border-4 ${
-                plan.id === 'monthly' ? 'border-primary-300 shadow-2xl' : 'border-transparent hover:border-primary-200'
+                (plan.name === 'Regular' && plan.interval === billing) ? 'border-primary-300 shadow-2xl' : 'border-transparent hover:border-primary-200'
                 } h-full flex flex-col`}>
                 <div className="text-center mb-6">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
@@ -700,7 +529,7 @@ export default function HomePage() {
                           <span className="text-lg text-gray-600">/{plan.interval}</span>
                         </>
                       ) : (
-                        <span className="text-gray-600">TBA</span>
+                        <span className="text-gray-600">Coming Soon</span>
                       )}
                     </div>
                     {plan.id==='free' && (
@@ -724,9 +553,9 @@ export default function HomePage() {
 
                   <button
                     onClick={() => handleSubscribe(plan)}
-                    disabled={loading === plan.id || !plan.stripePriceId}
+                    disabled={loading === plan.id || (!plan.stripePriceId && plan.id !== 'free')}
                     className={`w-full py-4 text-lg font-bold rounded-full transition-all duration-200 disabled:opacity-50 ${
-                      plan.id === 'free' ? 'btn-secondary' : plan.id === 'monthly' ? 'btn-primary' : 'btn-accent'
+                      plan.id === 'free' ? 'btn-primary' : plan.name === 'Regular' ? 'btn-primary' : 'btn-accent'
                     }`}
                   >
                     {loading === plan.id ? (
@@ -795,3 +624,4 @@ export default function HomePage() {
     </div>
   )
 }
+  

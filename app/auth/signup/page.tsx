@@ -95,7 +95,7 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 star-pattern">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-white">
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
           <div className="text-6xl mb-4">🎨</div>

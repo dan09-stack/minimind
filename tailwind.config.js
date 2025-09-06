@@ -8,42 +8,51 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Soft palette for parents and kids
+        // Primary Yellow (Headers, Highlights)
         primary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
+          50:  '#FFF8E1',
+          100: '#FFECB3',
+          200: '#FFE082', // requested
+          300: '#FFD54F',
+          400: '#FFCA28',
+          500: '#FFC107',
+          600: '#FFB300', // darker for text accents
+          700: '#FFA000',
+          800: '#FF8F00',
+          900: '#FF6F00',
         },
+        // Secondary Teal (Buttons, Footer)
         secondary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50:  '#E0F2F1',
+          100: '#B2DFDB',
+          200: '#80CBC4', // requested
+          300: '#4DB6AC',
+          400: '#26A69A',
+          500: '#009688',
+          600: '#00897B',
+          700: '#00796B',
+          800: '#00695C',
+          900: '#004D40',
         },
+        // Tertiary Coral (Accent Buttons, Alerts)
         accent: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
+          50:  '#FFF3E0',
+          100: '#FFE0B2',
+          200: '#FFCCBC',
+          300: '#FFAB91', // requested
+          400: '#FF8A65',
+          500: '#FF7043',
+          600: '#F4511E',
+          700: '#E64A19',
+          800: '#D84315',
+          900: '#BF360C',
         },
+        // Content Cards / Blocks
+        card: '#BBDEFB',
+        // Text colors
+        textPrimary: '#424242',
+        textSecondary: '#9E9E9E',
         success: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -74,4 +83,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+  }

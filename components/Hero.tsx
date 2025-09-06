@@ -3,7 +3,7 @@ import Link from 'next/link'
 export function Hero() {
   return (
     <div className="relative overflow-hidden">
-      <div className="star-pattern absolute inset-0 opacity-20"></div>
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
           <div className="text-8xl mb-6 animate-bounce-slow">🌟</div>

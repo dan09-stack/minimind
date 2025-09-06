@@ -41,7 +41,7 @@ export default function SuccessPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center star-pattern">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <div className="text-6xl mb-4 animate-spin">⭐</div>
           <p className="text-xl font-comic text-gray-600">Processing your subscription...</p>
@@ -51,7 +51,7 @@ export default function SuccessPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center star-pattern">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="card max-w-lg text-center">
         <div className="text-8xl mb-6">🎉</div>
         <h1 className="text-4xl font-kids text-gray-800 mb-4">

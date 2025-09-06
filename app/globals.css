@@ -27,27 +27,25 @@ html {
 }
 
 body {
-  color: #1f2937; /* Always dark gray text for readability */
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      #ffffff
-    )
-    #f3f4f6; /* Light gray to white gradient */
+  color: #424242; /* Text Primary: softer than pure black, highly readable */
+  background: #FFFFFF; /* Main canvas: clean white */
   font-family: 'Comic Neue', cursive;
 }
 
 /* Kid-friendly styles */
 .btn-primary {
-  @apply bg-gradient-to-r from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+/* Primary buttons: Soft Teal (#80CBC4) */
+  @apply bg-secondary-200 hover:bg-secondary-300 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
 }
-
+ 
 .btn-secondary {
-  @apply bg-gradient-to-r from-secondary-400 to-secondary-600 hover:from-secondary-500 hover:to-secondary-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+  /* Secondary buttons: Soft Coral (#FFAB91) */
+ @apply bg-accent-300 hover:bg-accent-400 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
 }
 
 .btn-accent {
-  @apply bg-gradient-to-r from-accent-400 to-accent-600 hover:from-accent-500 hover:to-accent-700 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
+  /* Accent buttons (also soft coral to align palette) */
+  @apply bg-accent-300 hover:bg-accent-400 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95;
 }
 
 .card {
@@ -62,13 +60,4 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
 }
 
-.star-pattern {
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
-    radial-gradient(2px 2px at 40px 70px, #ff69b4, transparent),
-    radial-gradient(1px 1px at 90px 40px, #00bfff, transparent),
-    radial-gradient(1px 1px at 130px 80px, #32cd32, transparent),
-    radial-gradient(2px 2px at 160px 30px, #ff4500, transparent);
-  background-repeat: repeat;
-  background-size: 200px 100px;
-}
+
