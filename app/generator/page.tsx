@@ -1,9 +1,5 @@
-import { ContentGenerator } from '@/components/ContentGenerator'
+import { redirect } from 'next/navigation'
 
 export default function GeneratorPage() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <ContentGenerator />
-    </div>
-  )
+  redirect('/generate')
 }

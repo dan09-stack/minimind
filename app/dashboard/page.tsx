@@ -131,7 +131,7 @@ export default function Dashboard() {
             <h2 className="text-xl font-bold text-gray-800">Quick Actions</h2>
           </div>
           <div className="space-y-3">
-            <Link href="/generator" className="block w-full btn-primary py-3 text-center">
+            <Link href="/generate" className="block w-full btn-primary py-3 text-center">
               🎨 Create Content
             </Link>
             <Link href="/pricing" className="block w-full btn-secondary py-3 text-center">
@@ -163,7 +163,7 @@ export default function Dashboard() {
             ))}
             {generations.length === 0 && (
               <p className="text-gray-500 font-comic text-center py-4">
-                No content created yet. <Link href="/generator" className="text-primary-600 underline">Start creating!</Link>
+                No content created yet. <Link href="/generate" className="text-primary-600 underline">Start creating!</Link>
               </p>
             )}
           </div>
@@ -177,7 +177,7 @@ export default function Dashboard() {
             <span className="text-3xl mr-3">📚</span>
             <h2 className="text-2xl font-bold text-gray-800">Your Content Library</h2>
           </div>
-          <Link href="/generator" className="btn-primary">
+          <Link href="/generate" className="btn-primary">
             🎨 Create New
           </Link>
         </div>
@@ -229,7 +229,7 @@ export default function Dashboard() {
             <p className="text-gray-600 font-comic mb-6">
               Start creating amazing learning content for kids
             </p>
-            <Link href="/generator" className="btn-primary text-lg px-8 py-3">
+            <Link href="/generate" className="btn-primary text-lg px-8 py-3">
               🚀 Create Your First Content
             </Link>
           </div>

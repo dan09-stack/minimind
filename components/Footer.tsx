@@ -25,7 +25,7 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/generator" className="text-gray-100 hover:text-white transition-colors">
+                <Link href="/generate" className="text-gray-100 hover:text-white transition-colors">
                   Content Generator
                 </Link>
               </li>

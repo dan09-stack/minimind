@@ -62,7 +62,7 @@ export default function SuccessPage() {
         </p>
         
         <div className="space-y-4">
-          <Link href="/generator" className="block w-full btn-primary py-4 text-lg">
+          <Link href="/generate" className="block w-full btn-primary py-4 text-lg">
             🎨 Start Creating Content
           </Link>
           <Link href="/dashboard" className="block w-full btn-secondary py-3">

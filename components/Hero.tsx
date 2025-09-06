@@ -17,7 +17,7 @@ export function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link href="/generator" className="btn-primary text-xl px-8 py-4">
+            <Link href="/generate" className="btn-primary text-xl px-8 py-4">
               🎨 Start Creating
             </Link>
             <Link href="/auth/signup" className="btn-secondary text-xl px-8 py-4">
